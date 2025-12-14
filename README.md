@@ -14,7 +14,8 @@ The primary dataset is Fashion MNIST
 
 **Dataset Link**
 The Fashion MNIST dataset is available directly through major deep learning libraries.
-
+# ***Data Sample***
+![img.png](img.png)
 
 **Source**: Available from TensorFlow/Keras datasets or online (Zalando Research).
 
@@ -49,7 +50,7 @@ import tensorflow as tf
 from tensorflow import keras
 
 # Define the absolute path to your saved model file
-MODEL_PATH = 'saved_model/best_model.keras' 
+MODEL_PATH = 'saved_model/best_model.h5' 
 
 # Load the model
 model = keras.models.load_model(MODEL_PATH)

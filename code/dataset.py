@@ -1,7 +1,5 @@
-import matplotlib.pyplot as plt
+import numpy as np
 from tensorflow.keras.datasets import fashion_mnist
-from tensorflow.keras.utils import to_categorical
-from model import build_cnn
 
 def load_and_preprocess(val_ratio=0.1):
  (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
@@ -18,13 +16,11 @@ def load_and_preprocess(val_ratio=0.1):
  print("Train shape after reshape:", x_train.shape)
  print("Test shape after reshape:", x_test.shape)
 
- class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag',
-                'Ankle boot']
 
- for i in range(11):
-     label_index = y_train[i]
-     print(f"Sample {i}: Label {label_index} -> {class_names[label_index]}")
- model = build_cnn(input_shape=(28, 28, 1), num_classes=10)
+ indices = np.arange(len(x_train))
+ np.random.shuffle(indices)
+ x_train = x_train[indices]
+ y_train = y_train[indices]
 
  val_size = int(len(x_train) * val_ratio)
  x_val = x_train[:val_size]
